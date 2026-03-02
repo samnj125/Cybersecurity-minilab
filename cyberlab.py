@@ -76,6 +76,7 @@ def port_scanner():
     for port in range(1, 1025):
         thread = threading.Thread(target=scan, args=(port,))
         thread.start()
+# Improved scanner
 
 
 # ================= MAIN MENU =================
