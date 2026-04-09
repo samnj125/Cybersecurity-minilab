@@ -40,7 +40,7 @@ This demonstrates symmetric encryption concepts.
 ---
 
 ## 📡 Port Scanner
-Scans a target IP address and identifies open ports within a specified range.
+Scans a target IP address and identifies open ports within a specified range and gives a report on the scan. 
 
 This demonstrates basic network scanning and socket programming.
 
