@@ -1,0 +1,7 @@
+Target: 192.168.100.3
+Scan Date: 2026-04-10 01:53:12.884913
+
+Open Ports:
+- Port 135
+- Port 139
+- Port 445

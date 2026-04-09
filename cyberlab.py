@@ -13,7 +13,6 @@ def hash_generator():
     print("2. SHA256")
 
     choice = input("Choice: ")
-
     if choice == "1":
         result = hashlib.md5(text.encode()).hexdigest()
     elif choice == "2":
@@ -63,20 +62,40 @@ def encryption_tool():
 # ================= PORT SCANNER =================
 def port_scanner():
     target = input("Enter target IP: ")
+    open_ports = []
 
     print(f"\nScanning {target}...\n")
 
     def scan(port):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(0.5)
+
         if s.connect_ex((target, port)) == 0:
             print(f"[+] Port {port} is OPEN")
+            open_ports.append(port)
+
         s.close()
 
     for port in range(1, 1025):
         thread = threading.Thread(target=scan, args=(port,))
         thread.start()
-# Improved scanner
+
+    import time
+    time.sleep(5)
+
+    # Create report
+    from datetime import datetime
+
+    with open("scan_report.txt", "w") as file:
+        now = datetime.now()
+        file.write(f"Target: {target}\n")
+        file.write(f"Scan Date: {now}\n\n")
+        file.write("Open Ports:\n")
+
+        for port in open_ports:
+            file.write(f"- Port {port}\n")
+
+    print("\nReport saved as scan_report.txt\n")
 
 
 # ================= MAIN MENU =================
